@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Game of Votes</title>
+	
+	<!-- css -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/main.css"/>
+</head>
+
+<body>
+	
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<a class="navbar-brand text-center center-block" href="#">Voting Game</a>
+		</div>
+	</nav>
+	
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-offset-2 col-md-7 ">
+				<div id="population">
+          <canvas class="board" width="500" height="500"></canvas>
+				</div>
+			</div>
+      
+      <div class="col-md-3">
+				<div>
+					<button type="button" id="reset" class="btn btn-default btn-block">Reset <span class="glyphicon glyphicon-off"></span></button>
+					<button type="button" id="start" class="btn btn-success btn-block">Start <span class="glyphicon glyphicon-play"></span></button>
+					<button type="button" id="stop" class="btn btn-danger btn-block">Stop <span class="glyphicon glyphicon-stop"></span></button>
+				</div>
+        
+        <br/>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Results
+          </div>
+          <div class="panel-body">
+            <p>Blue party: <span class="pull-right blue-votes text-primary">0</span></p>
+            <p>Red party: <span class="pull-right red-votes text-danger">0</span></p>
+          </div>
+        </div>
+			</div>
+      
+		</div>
+	</div>
+	
+	<!-- app -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js" data-main="scripts/main"></script>
+</body>
+
+</html>

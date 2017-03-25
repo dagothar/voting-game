@@ -1,0 +1,7 @@
+.dead { background-color: #000000; }
+.alive { background-color: #00ff00; }
+.burning { background-color: #ff0000; }
+
+table { width: 100%; }
+
+.navbar-brand { float: none; }
