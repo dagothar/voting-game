@@ -70,6 +70,7 @@ $(document).ready(function() {
     console.log(distribution);
     game = generateMap(distribution);
     clearInterval(stepTimer);
+    i = 0;
     updateView(game);
     $('#start').show();
     $('#stop').hide();
