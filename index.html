@@ -28,10 +28,17 @@
 			</div>
       
       <div class="col-md-3">
-				<div>
-					<button type="button" id="reset" class="btn btn-default btn-block">Reset <span class="glyphicon glyphicon-off"></span></button>
-					<button type="button" id="start" class="btn btn-success btn-block">Start <span class="glyphicon glyphicon-play"></span></button>
-					<button type="button" id="stop" class="btn btn-danger btn-block">Stop <span class="glyphicon glyphicon-stop"></span></button>
+				<div class="panel panel-default">
+          <div class="panel-heading">Controls</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label>Initial distribution:</label>
+              <input type="range" min="0" val="50" max="100" class="distribution"/>
+            </div>
+            <button type="button" id="reset" class="btn btn-default btn-block">Reset <span class="glyphicon glyphicon-off"></span></button>
+            <button type="button" id="start" class="btn btn-success btn-block">Start <span class="glyphicon glyphicon-play"></span></button>
+            <button type="button" id="stop" class="btn btn-danger btn-block">Stop <span class="glyphicon glyphicon-stop"></span></button>
+          </div>
 				</div>
         
         <br/>

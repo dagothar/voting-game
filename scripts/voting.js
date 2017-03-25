@@ -46,8 +46,8 @@ define('voting', ['jquery', 'array2d'], function($, a2d) {
 		
     
     /* generates a random population */
-		this.randomize = function() {
-			cells.forEach(function(v, x, y) { cells.set(x, y, Math.random() < 0.5 ? States.BLUE : States.RED); });
+		this.randomize = function(distribution) {
+			cells.forEach(function(v, x, y) { cells.set(x, y, Math.random() < distribution ? States.BLUE : States.RED); });
 		};
 				
     
@@ -93,7 +93,7 @@ define('voting', ['jquery', 'array2d'], function($, a2d) {
 			return votes;
 		};
 		
-		this.randomize();
+		this.randomize(0.5);
 	}
 	
 	return {

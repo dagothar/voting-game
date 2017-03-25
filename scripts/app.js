@@ -17,12 +17,14 @@ define('app', ['jquery', 'voting'], function($, _voting) {
     
     
     /* generates new map */
-    var generateMap = function() {
-      return new _voting.VotingGame(25, 25);
+    var generateMap = function(distribution) {
+      var game = new _voting.VotingGame(25, 25);
+      game.randomize(distribution);
+      return game;
     };
     
 		
-		var game = generateMap();
+		var game = generateMap(0.5);
 		updateView(game);
     $('#start').show();
     $('#stop').hide();
@@ -38,7 +40,9 @@ define('app', ['jquery', 'voting'], function($, _voting) {
     
     /* resets the board */
 		$("#reset").click(function(ev) {
-			game = generateMap();
+      var distribution = $(".distribution").val() * 0.01;
+      console.log(distribution);
+			game = generateMap(distribution);
       clearInterval(stepTimer);
 			updateView(game);
       $('#start').show();
