@@ -1,4 +1,4 @@
-define('voting', ['jquery', 'array2d'], function($, a2d) {
+var VotingGame = (function() {
 	
 	function VotingGame(width, height) {
     
@@ -28,7 +28,7 @@ define('voting', ['jquery', 'array2d'], function($, a2d) {
     
 		var width = width;
 		var height = height;
-		var cells = new a2d.Array2d(width, height);
+		var cells = new Array2d(width, height);
 		
     
     /* returns the width */
@@ -123,8 +123,6 @@ define('voting', ['jquery', 'array2d'], function($, a2d) {
 		this.randomize(0.5);
 	}
 	
-	return {
-		VotingGame: VotingGame
-	}
+	return VotingGame;
 	
-});
+} ());

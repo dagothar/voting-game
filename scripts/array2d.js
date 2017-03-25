@@ -1,4 +1,4 @@
-define('array2d', ['underscore'], function(_) {
+var Array2d = (function() {
 	
 	function Array2d(width, height, value) {
 		var width = width;
@@ -59,7 +59,5 @@ define('array2d', ['underscore'], function(_) {
 
 	};
 	
-	return {
-		Array2d: Array2d
-	};
-});
+	return Array2d;
+} ());
