@@ -62,6 +62,9 @@ define('voting', ['jquery', 'array2d'], function($, a2d) {
       var nx = x + neighbourhood[n][0];
       var ny = y + neighbourhood[n][1];
       
+      if (nx < 0) nx += width;
+      if (ny < 0) ny += height;
+      
       nx = nx % width;
       ny = ny % height;      
       
@@ -92,6 +95,30 @@ define('voting', ['jquery', 'array2d'], function($, a2d) {
 			cells.forEach(function(v, x, y) { if (v == state) ++votes; });
 			return votes;
 		};
+    
+    
+    /* returns cell position */
+    this.getCellPos = function(canvas, mousePos) {
+      
+      var dx = canvas.getAttribute('width') / width;
+      var dy = canvas.getAttribute('height') / height;
+      
+      return {
+        x: Math.floor(mousePos.x / dx),
+        y: Math.floor(mousePos.y / dy)
+      };
+    };
+    
+    
+    this.getCell = function(pos) {
+      return cells.get(pos.x, pos.y);
+    };
+    
+    
+    this.setCell = function(pos, value) {
+      cells.set(pos.x, pos.y, value);
+    };
+    
 		
 		this.randomize(0.5);
 	}

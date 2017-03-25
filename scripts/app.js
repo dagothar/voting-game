@@ -4,9 +4,12 @@ define('app', ['jquery', 'voting'], function($, _voting) {
   /* starts the application */
 	function start() {
     
+    var canvas = $('.board').get(0);
+    
+    
     /* updates the board */
 		var updateView = function(g) {
-			g.render($(".board").get(0));
+			g.render(canvas);
       
       var blue = g.countVotes(1);
       var red = g.countVotes(2);
@@ -68,6 +71,41 @@ define('app', ['jquery', 'voting'], function($, _voting) {
       $('#start').show();
       $('#stop').hide();
 		});
+    
+    
+    function getMousePos(e, client) {
+      var rect = client.getBoundingClientRect();
+      return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    };
+    
+    
+    var paint = true;
+    var drag = false;
+    $('.board').mousedown(function(e) {
+      var pos = game.getCellPos(canvas, getMousePos(e, canvas));
+      paint = game.getCell(pos) == 1 ? 2 : 1;
+      game.setCell(pos, paint);
+      game.render(canvas, true);
+      
+      $(this).bind('mousemove', function(e) {
+        var pos = game.getCellPos(canvas, getMousePos(e, canvas));
+        game.setCell(pos, paint);
+        game.render(canvas, pos);
+      });
+    });
+    
+    
+    $('.board').mouseup(function(e) {
+      $(this).unbind('mousemove');
+    });
+    
+    
+    $('.board').mouseout(function(e) {
+      $(this).unbind('mousemove');
+    });
 	}
 	
   
