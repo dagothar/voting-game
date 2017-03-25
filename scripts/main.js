@@ -2,16 +2,41 @@ $(document).ready(function() {
     
   var canvas = $('.board').get(0);
   
+  var red = 0;
+  var blue = 0;
+  
+  
+  /* updates the plot */
+  var updatePlot = function(g) {
+    var data = [{
+      values: [100.0*blue/625.0, 100.0*red/625.0],
+      labels: ['Blue', 'Red'],
+      marker: {
+        colors: ['rgb(0, 0, 255)', 'rgb(255, 0, 0)']
+      },
+      type: 'pie'
+    }];
+
+    var layout = {
+      height: 240,
+      width: 240
+    };
+
+    Plotly.newPlot('plot', data, layout);
+  };
+  
   
   /* updates the board */
   var updateView = function(g) {
     g.render(canvas);
     
-    var blue = g.countVotes(1);
-    var red = g.countVotes(2);
+    blue = g.countVotes(1);
+    red = g.countVotes(2);
     
     $(".blue-votes").text(blue);
     $(".red-votes").text(red);
+    
+    updatePlot(g);
   };
   
   
@@ -84,12 +109,12 @@ $(document).ready(function() {
     var pos = game.getCellPos(canvas, getMousePos(e, canvas));
     paint = game.getCell(pos) == 1 ? 2 : 1;
     game.setCell(pos, paint);
-    game.render(canvas, true);
+    updateView(game);
     
     $(this).bind('mousemove', function(e) {
       var pos = game.getCellPos(canvas, getMousePos(e, canvas));
       game.setCell(pos, paint);
-      game.render(canvas, pos);
+      updateView(game);
     });
   });
   
