@@ -4,6 +4,7 @@ $(document).ready(function() {
   
   var red = 0;
   var blue = 0;
+  var i = 0;
   
   
   /* updates the plot */
@@ -36,7 +37,7 @@ $(document).ready(function() {
     $(".blue-votes").text(blue);
     $(".red-votes").text(red);
     
-    updatePlot(g);
+    if (!(i % 100)) updatePlot(g);
   };
   
   
@@ -59,6 +60,7 @@ $(document).ready(function() {
   var makeStep = function() {
     game.step();
     updateView(game);
+    ++i;
   };
   
   
